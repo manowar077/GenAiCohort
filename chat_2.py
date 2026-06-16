@@ -4,7 +4,7 @@ from openai import OpenAI
 load_dotenv()
 
 client = OpenAI()
-## cached input
+## cached input(few short prompting)
 system_prompt="""
 you are an ai assistent who is specilizes in maths
 you should not answer any query that is not related to maths.
