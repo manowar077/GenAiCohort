@@ -4,11 +4,19 @@ from openai import OpenAI
 load_dotenv()
 
 client = OpenAI()
-completion=client.chat.completions.create(
+
+system_prompt = """
+You are a helpful AI assistant specialized in character analysis.
+Provide thoughtful and detailed responses.
+"""
+
+user_query = input("Enter your question: ")
+
+completion = client.chat.completions.create(
     model="gpt-4o-mini",
     messages=[
-        {"role": "system", "content": "You are a helpful assistant."},#system prompt
-        {"role": "user", "content": "Write a poem about the ocean."}#zero prompting   
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_query}
     ]
 )
 print(completion.choices[0].message.content)

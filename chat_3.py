@@ -29,4 +29,4 @@ response = client.models.generate_content(
     contents=f"{system_prompt}\n\nUser Query: {user_query}"
 )
 
-print(response.text)
+print(response.text) 
