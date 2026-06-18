@@ -8,3 +8,17 @@ regex==2026.5.9
 requests==2.34.2
 tiktoken==0.13.0
 urllib3==2.7.0
+langchain
+langchain-core
+langchain-community
+langgraph
+langchain-openai
+langchain-google-genai
+langchain-groq
+langchain-mistralai
+fastapi
+uvicorn
+tiktoken
+requests
+python-dotenv
+faiss-cpu
