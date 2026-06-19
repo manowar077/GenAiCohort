@@ -10,7 +10,7 @@ load_dotenv()
 
 client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
 
-def generate_with_retry(question, max_retries=3, wait_time=5):
+def generate_with_retry(question, max_retries=3, wait_time=2):
     """Generate content with automatic retry logic for server errors"""
     for attempt in range(max_retries):
         try:
@@ -23,8 +23,8 @@ def generate_with_retry(question, max_retries=3, wait_time=5):
             # Handle quota/rate limit errors (429)
             if "429" in str(e) or "RESOURCE_EXHAUSTED" in str(e):
                 if attempt < max_retries - 1:
-                    print(f"\n⏳ Quota limit hit (attempt {attempt + 1}/{max_retries}). Waiting {wait_time * 10}s before retry...")
-                    time.sleep(wait_time * 10)  # Wait longer for quota errors
+                    print(f"\n⏳ Quota limit hit (attempt {attempt + 1}/{max_retries}). Waiting {wait_time * 3}s before retry...")
+                    time.sleep(wait_time * 3)  # Wait longer for quota errors
                 else:
                     raise e
             else:
